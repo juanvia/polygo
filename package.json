@@ -1,0 +1,37 @@
+{
+  "name": "polygo",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "^4.2.1",
+    "@types/ramda": "^0.26.10",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "ramda": "^0.26.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-redux": "^7.1.0",
+    "react-scripts": "latest",
+    "redux": "^4.0.1",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
