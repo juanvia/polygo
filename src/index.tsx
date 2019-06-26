@@ -12,7 +12,8 @@ import { compose } from 'ramda';
 
 const store = configureStore()
 
-{/* Initial computation of the exponents matrix */}
+/* Initial computation of the exponents matrix */
+
 const {dimensions, degree} = store.getState()
 compose(store.dispatch,setExponents,exponents)(dimensions, degree)
 

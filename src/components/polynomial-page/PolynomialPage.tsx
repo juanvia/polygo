@@ -5,7 +5,6 @@ import { Polynomial } from './Polynomial';
 import { Matrix } from './Matrix';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../redux/store';
-import exponents from '../../redux/reducers/exponents';
 
 export const PolynomialPage = () => {
     const exponentsMatrix = useSelector((state:AppState) => state.exponents)
