@@ -8,9 +8,14 @@ export const Matrix = () => {
     const exponents: number[][] | undefined = useSelector((state: AppState) => state.exponents)
 
     return <div>
-        <Typography variant="h5" gutterBottom  style={{marginTop: 48}}>
+        <Typography variant="h5" gutterBottom style={{ marginTop: 48 }}>
             Terms exponents
         </Typography>
-        <div>{JSON.stringify(exponents)}</div>
+
+        <p><b>{exponents.length}</b> rows.</p>
+        
+        <div style={{fontFamily: 'Roboto Mono', fontSize: 14, fontWeight: 'bolder'}}>
+            {JSON.stringify(exponents)}
+        </div>
     </div>
 }

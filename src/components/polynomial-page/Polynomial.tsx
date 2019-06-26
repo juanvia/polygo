@@ -78,11 +78,11 @@ const Left = () => {
 
   if (!dimensions) return <></>
 
-  return <><span className="surly">
+  return <><span style={{marginRight:8}}>
     {variablesNotation === 'pedantic' ? 'y' : variableNames[dimensions]}
   </span>
-    <span className="surly">=</span>
-    <span className="surly"> f(
+    <span style={{marginRight:8}}>=</span>
+    <span style={{marginRight:8}}> f(
     <span>
         {
           variablesNotation !== 'pedantic'
@@ -92,10 +92,10 @@ const Left = () => {
       </span>
       )
     </span>
-    }
-  <span className="surly">:</span>
-    <span className="surly">&#x211D;<sup>{dimensions}</sup>&#xffeb;&#x211D;</span>
-    <span className="surly">=</span>
+    
+  <span style={{marginRight:8}}>:</span>
+    <span style={{marginRight:8}}>&#x211D;<sup>{dimensions}</sup>&#xffeb;&#x211D;</span>
+    <span style={{marginRight:8}}>=</span>
 
   </>
 }
@@ -126,11 +126,20 @@ export const Polynomial = () => {
     <Typography variant="h5" gutterBottom style={{ marginTop: 48 }}>
       Polynomial
     </Typography>
-    
-    <p><b>{exponentsMatrix.length}</b> terms.</p>
-    <Left />
 
-    <Terms exponentsMatrix={exponentsMatrix} />
+    <p><b>{exponentsMatrix.length}</b> terms.</p>
+
+    {/** #406eb7*/}
+    
+    <div style={{ 
+      fontFamily: 'Shadows Into Light', 
+      lineHeight: 1, 
+      fontSize: '1.3rem', 
+      fontWeight:'bolder',
+      color: '#5078b7' }}>
+      <Left />
+      <Terms exponentsMatrix={exponentsMatrix} />
+    </div>
 
   </div>
 }

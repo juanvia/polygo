@@ -6,8 +6,15 @@ import { ThemeProvider } from '@material-ui/styles';
 import App from './App';
 import theme from './theme';
 import configureStore from './redux/store'
+import { setExponents } from './redux/actions';
+import { exponents } from './lib/exponents';
+import { compose } from 'ramda';
 
 const store = configureStore()
+
+{/* Initial computation of the exponents matrix */}
+const {dimensions, degree} = store.getState()
+compose(store.dispatch,setExponents,exponents)(dimensions, degree)
 
 ReactDOM.render(
   <Provider store={store}>

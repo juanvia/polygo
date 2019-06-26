@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { PolynomialPage } from './components/polynomial-page/PolynomialPage';
+import ImageAvatars from './components/ImageAvatars';
 
 
 const useStyles = makeStyles(theme => ({
@@ -37,6 +38,7 @@ export default function App() {
         <Container maxWidth={false} className={classes.container}>
           <Grid container spacing={1}>
             <Grid item xs={2}>
+              <ImageAvatars />
             </Grid>
             <Grid item xs>
               <PolynomialPage />

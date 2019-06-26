@@ -5,6 +5,7 @@ import { Polynomial } from './Polynomial';
 import { Matrix } from './Matrix';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../redux/store';
+import exponents from '../../redux/reducers/exponents';
 
 export const PolynomialPage = () => {
     const exponentsMatrix = useSelector((state:AppState) => state.exponents)
@@ -16,13 +17,13 @@ export const PolynomialPage = () => {
 
         <Form />
 
-        {(exponentsMatrix && exponentsMatrix.length > 0 && exponentsMatrix[0].length > 0)
-            ? <Polynomial />
-            : <></> 
+        {(exponentsMatrix && exponentsMatrix.length > 0 && exponentsMatrix[0].length)
+            ? <><Polynomial /><Matrix></Matrix></>
+            : <div style={{marginTop:40}}>...press GO</div> 
         }
         
 
-        <Matrix />
+        
 
     </div>
 }

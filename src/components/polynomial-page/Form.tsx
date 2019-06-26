@@ -5,17 +5,18 @@ import { exponents } from '../../lib/exponents';
 import { setCoefficientNotation, setDegree, setDimensions, setExponents, setVariablesNotation } from '../../redux/actions';
 import { TradicionalVsPedantic } from '../../redux/actionTypes';
 import { AppState } from '../../redux/store';
+import { compose } from 'ramda';
 
 const variablesNotationText = 'Select the notation the variables will have. '
-    + 'Traditional notation is in the form x,y,z,... instead pedantic notation use '
+    + 'Traditional notation is in the form x,y,z,... instead pedantic notation uses '
     + 'subindices of x.'
 const coefficientNotationText = 'Select the notation the coefficient will have. '
-    + 'Traditional notation is in the form A,B,C,... instead pedantic notation use'
+    + 'Traditional notation is in the form A,B,C,... instead pedantic notation uses '
     + 'subindices of a.'
 const degreeText = "Enter the polynomial's degree, "
-    + 'the maximum of the sum of the exponentes the polynomial terms have.'
+    + 'the maximum sum of the exponentes the polynomial terms have.'
 const dimensionsText = "Enter the polynomial's dimensions, "
-    + 'the number of independent variables in the polynomial.'
+    + 'the number of independent variables in it.'
 
 
 export const Form = () => {
@@ -30,18 +31,22 @@ export const Form = () => {
 
     const handleDimensionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setDimensions(Number(event.target.value)))
+        compose(dispatch,setExponents)([[]])
     }
     const handleDegreeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setDegree(Number(event.target.value)))
+        compose(dispatch,setExponents)([[]])
     }
     const handleCoefficientNotationChange = (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
         dispatch(setCoefficientNotation(event.target.value as TradicionalVsPedantic))
+        compose(dispatch,setExponents)([[]])
     }
     const handleVariablesNotationChange = (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
         dispatch(setVariablesNotation(event.target.value as TradicionalVsPedantic))
+        compose(dispatch,setExponents)([[]])
     }
     const makeTheBloodyPolynomialAtOnce = () => {
-        dispatch(setExponents(exponents(dimensions, degree)))
+        compose(dispatch,setExponents,exponents)(dimensions, degree)
     }
     const useStyles = makeStyles(theme => ({
         container: {
@@ -90,7 +95,7 @@ export const Form = () => {
         <Typography variant="h5" gutterBottom  style={{marginTop: 48}}>
             How
         </Typography>
-        <div>Enter some parameters and press GO</div>
+        <div>Change some parameters and press GO</div>
         <TextField
             id="dimensions"
             label="Dimensions"
