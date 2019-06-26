@@ -93,7 +93,7 @@ export const Form = () => {
     const classes = useStyles()
     return <div>
         <Typography variant="h5" gutterBottom  style={{marginTop: 48}}>
-            How
+            How to get it?
         </Typography>
         <div>Change some parameters and press GO</div>
         <TextField
@@ -154,7 +154,7 @@ export const Form = () => {
                 <option value={'pedantic'}>Pedantic</option>
             </Select>
         </FormControl>
-        <Button
+        <Button variant="outlined"
             className={classes.buttonGo}
             onClick={makeTheBloodyPolynomialAtOnce}>
             Go
