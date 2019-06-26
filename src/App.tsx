@@ -3,12 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import { PolynomialPage } from './components/polynomial-page/PolynomialPage';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    color: '#808080',
+    color: '#606060',
   },
   content: {
     flexGrow: 1,
@@ -33,13 +34,12 @@ export default function App() {
     <div className={classes.root}>
       <CssBaseline />
       <main className={classes.content}>
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth={false} className={classes.container}>
           <Grid container spacing={1}>
             <Grid item xs={2}>
-              Menu
             </Grid>
             <Grid item xs>
-              Content
+              <PolynomialPage />
             </Grid>
           </Grid>
         </Container>

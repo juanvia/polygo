@@ -8,12 +8,15 @@
     "@types/ramda": "^0.26.10",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/react-redux": "^7.1.0",
     "ramda": "^0.26.1",
     "react": "latest",
     "react-dom": "latest",
     "react-redux": "^7.1.0",
     "react-scripts": "latest",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "typescript": "latest"
   },
   "scripts": {

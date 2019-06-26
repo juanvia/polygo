@@ -87,8 +87,11 @@ const takeValidPoints = (n:number, m:number) => {
 // A 'exponents array' is a vector containing the powers at which the correspondent 
 // independent variable must be raised
 
-export const exponents = (dimensions:number, degree:number) => {
+export const exponents = (dimensions:number|undefined, degree:number|undefined):number[][] => {
   
+  // Maybe the programmer is lousy
+  if (!dimensions || !degree) return [[]]
+
   // Add zero degree case
   if (degree === 0) {
     return [repeat(0,dimensions)]
