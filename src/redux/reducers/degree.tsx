@@ -2,7 +2,7 @@ import { SET_DEGREE, SetDegreeAction } from "../actionTypes";
 import { Reducer } from "react";
 
 
-const initialState:number = 6;
+const initialState:number = 3;
 
 export const degree : Reducer<number | undefined,SetDegreeAction> = 
 (state = initialState, action:SetDegreeAction) => {

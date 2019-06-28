@@ -90,7 +90,7 @@ const takeValidPoints = (n:number, m:number) => {
 export const exponents = (dimensions:number|undefined, degree:number|undefined):number[][] => {
   
   // Maybe the programmer is lousy
-  if (!dimensions || !degree) return [[]]
+  if (!dimensions || !degree) return [repeat(0,dimensions?dimensions:0)]
 
   // Add zero degree case
   if (degree === 0) {
@@ -105,3 +105,4 @@ export const exponents = (dimensions:number|undefined, degree:number|undefined):
 
 }
 
+export default exponents
