@@ -1,8 +1,8 @@
-import { range } from "ramda";
-import React from 'react';
+import { range } from "ramda"
+import React from 'react'
 import { useSelector } from 'react-redux'
-import { AppState } from "../../redux/store";
-import { Typography } from "@material-ui/core";
+import { AppState } from "../../redux/store"
+import { Typography } from "@material-ui/core"
 
 // ----- makePolynomial ---------------------------------------------------
 // Returns a string with a representation of the polynomial defined by the stacked matrix

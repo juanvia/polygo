@@ -1,7 +1,7 @@
-import { Typography } from '@material-ui/core';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { AppState } from '../../redux/store';
+import { Typography } from '@material-ui/core'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { AppState } from '../../redux/store'
 
 
 const degreeInWords = (degree: number): string => {
@@ -53,7 +53,7 @@ export const Matrix = () => {
             {dimensionsInWords(dimensions ? dimensions : 0)},<> </>
             {degreeInWords(degree ? degree : 0)},<>  </>
             <b>{exponentsMatrix.length}</b> rows. That's for programmers, ignore it.
-      </div>
+        </div>
 
 
         <div style={{ fontFamily: 'Roboto Mono', fontSize: 14, fontWeight: 'bolder', marginTop: 24 }}>
