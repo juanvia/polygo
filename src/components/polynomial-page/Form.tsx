@@ -1,9 +1,10 @@
-import { FormControl, InputLabel, makeStyles, Select, TextField, Typography } from '@material-ui/core'
+import { FormControl, InputLabel, makeStyles, Select, TextField } from '@material-ui/core'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCoefficientNotation, setDegree, setDimensions, setVariablesNotation, computeExponentsOn } from '../../redux/actions'
 import { TradicionalVsPedantic } from '../../redux/actionTypes'
 import { AppState } from '../../redux/store'
+import SectionHeader from './SectionHeader'
 
 //#region TootTips text
 const variablesNotationText = 'Set the variables notation.\n'
@@ -105,14 +106,17 @@ export const Form = () => {
     //#region My Components
 
     const Header = () => <div>
-        <Typography variant="h5" className={classes.title}>
-            How to get it?
-    </Typography>
-        <div>Change some parameters and look down, it is waiting for you there. </div>
-        <br />
+
+        <SectionHeader
+            title="How to get it?"
+            pompadour="Change some parameters and look down, it is waiting for you there."
+        />
+        <br/>
+
     </div>
 
     const Dimensions = () => <span>
+
         <TextField
             id="dimensions"
             label="Dimensions"

@@ -2,8 +2,8 @@ import { range } from "ramda"
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { AppState } from "../../redux/store"
-import { Typography } from "@material-ui/core"
 import { upperCases, variableNames, dimensionsInWords, degreeInWords } from '../../utils/toolbox'
+import SectionHeader from "./SectionHeader";
 
 //#region My Types
 
@@ -166,23 +166,25 @@ export const Polynomial = () => {
 
   </div>
 
- //#endregion
+  //#endregion
 
   //#region Title
 
-  const Title = () => <div>
+  const Title = () => {
 
-    <Typography variant="h5" style={{ marginTop: 48 }}>
-      Polynomial
-    </Typography>
+    const pompadour: string = ``
+      + `${dimensionsInWords(dimensions ? dimensions : 0)}, `
+      + `${degreeInWords(degree ? degree : 0)}, `
+      + `${exponentsArray.length} terms.`
+    return <div>
 
-    <div>
-      {dimensionsInWords(dimensions ? dimensions : 0)},<> </>
-      {degreeInWords(degree ? degree : 0)},<> </>
-      <b>{exponentsArray.length}</b> terms.
+      <SectionHeader
+        title="Polynomial"
+        pompadour={pompadour}
+      />
+
     </div>
-
-  </div>
+  }
 
   //#endregion
 
