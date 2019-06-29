@@ -7,7 +7,7 @@ import App from './App'
 import theme from './theme'
 import configureStore from './redux/store'
 import { setExponents } from './redux/actions'
-import { exponents } from './lib/exponents'
+import { exponentsArray } from './lib/exponents-array'
 import { compose } from 'ramda'
 
 const store = configureStore()
@@ -15,7 +15,7 @@ const store = configureStore()
 /* Initial computation of the exponents matrix */
 
 const {dimensions, degree} = store.getState()
-compose(store.dispatch,setExponents,exponents)(dimensions, degree)
+compose(store.dispatch,setExponents,exponentsArray)(dimensions, degree)
 
 ReactDOM.render(
   <Provider store={store}>

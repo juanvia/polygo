@@ -9,7 +9,7 @@ import {
   TradicionalVsPedantic
 } from "./actionTypes"
 import { AppState } from './store'
-import { exponents } from '../lib/exponents'
+import { exponentsArray } from '../lib/exponents-array'
 
 export const setExponents: ActionCreator<SetExponentsAction> =
   (array: number[][]): SetExponentsAction => ({
@@ -53,7 +53,7 @@ export const computeExponentsOn: ActionCreator<ThunkAction<SetExponentsAction, A
   (f: SuitableFunction, value: SuitableAction) => (dispatch: Function, getState: () => AppState) => {
     dispatch(f(value))
     const { dimensions, degree } = getState()
-    return dispatch(setExponents(exponents(dimensions, degree)))
+    return dispatch(setExponents(exponentsArray(dimensions, degree)))
   }
 
 

@@ -112,7 +112,7 @@ const takeValidPoints = (n:number, m:number) => {
  * @returns The valid points in a `dimensions`-dimensional and `degree`ic phase space
  *
  */
-export const exponents = (dimensions:number|undefined, degree:number|undefined):number[][] => {
+export const exponentsArray = (dimensions:number|undefined, degree:number|undefined):number[][] => {
   
   // Maybe the programmer is lousy
   if (!dimensions || !degree) return [repeat(0,dimensions?dimensions:0)]
@@ -130,4 +130,4 @@ export const exponents = (dimensions:number|undefined, degree:number|undefined):
 
 }
 
-export default exponents
+export default exponentsArray
