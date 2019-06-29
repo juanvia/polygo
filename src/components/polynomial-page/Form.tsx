@@ -1,50 +1,68 @@
-import { FormControl, InputLabel, makeStyles, Select, TextField, Typography } from '@material-ui/core';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCoefficientNotation, setDegree, setDimensions, setVariablesNotation, computeExponentsOn } from '../../redux/actions';
-import { TradicionalVsPedantic } from '../../redux/actionTypes';
-import { AppState } from '../../redux/store';
+import { FormControl, InputLabel, makeStyles, Select, TextField, Typography } from '@material-ui/core'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCoefficientNotation, setDegree, setDimensions, setVariablesNotation, computeExponentsOn } from '../../redux/actions'
+import { TradicionalVsPedantic } from '../../redux/actionTypes'
+import { AppState } from '../../redux/store'
 
-const variablesNotationText = 'Select the notation the variables will have. '
-    + 'Traditional notation is in the form x,y,z,... instead pedantic notation use '
+//#region TootTips text
+const variablesNotationText = 'Set the variables notation.\n'
+    + 'Traditional notation is in the form x,y,z,... instead pedantic notation uses '
     + 'subindices of x.'
-const coefficientNotationText = 'Select the notation the coefficient will have. '
-    + 'Traditional notation is in the form A,B,C,... instead pedantic notation use'
+const coefficientNotationText = 'Set the coefficient notation.\n'
+    + 'Traditional notation is in the form A,B,C,... instead pedantic notation uses '
     + 'subindices of a.'
-const degreeText = "Enter the polynomial's degree, "
-    + 'the maximum of the sum of the exponentes the polynomial terms have.'
-const dimensionsText = "Enter the polynomial's dimensions, "
-    + 'the number of independent variables in the polynomial.'
-
+const degreeText = "Enter the polynomial's degree.\n"
+    + 'I.e. the maximum sum of the term exponents.'
+const dimensionsText = "Enter the polynomial's dimensions.\n"
+    + 'I.e. the number of independent variables.'
+//#endregion
 
 export const Form = () => {
+
+    //#region Hooks
 
     const degree: number | undefined = useSelector((state: AppState) => state.degree)
     const dimensions: number | undefined = useSelector((state: AppState) => state.dimensions)
     const variablesNotation: string | undefined = useSelector((state: AppState) => state.variablesNotation)
     const coefficientNotation: string | undefined = useSelector((state: AppState) => state.coefficientNotation)
 
-
     const dispatch = useDispatch()
 
+    //#endregion
+
+    //#region Handlers
+
     const handleDimensionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
+        event.target.focus()
         dispatch(computeExponentsOn(setDimensions, Number(event.target.value)))
     }
     const handleDegreeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
+        event.target.focus()
         dispatch(computeExponentsOn(setDegree, Number(event.target.value)))
     }
     const handleCoefficientNotationChange = (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
+        event.preventDefault()
         dispatch(setCoefficientNotation(event.target.value as TradicionalVsPedantic))
     }
     const handleVariablesNotationChange = (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
-        //dispatch(setVariablesNotation(event.target.value as TradicionalVsPedantic))
+        event.preventDefault()
         dispatch(setVariablesNotation(event.target.value as TradicionalVsPedantic))
     }
+
+    //#endregion
+
+    //#region Styles
 
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',
             flexWrap: 'wrap',
+        },
+        title: {
+            marginTop: 48
         },
         textField: {
             marginLeft: theme.spacing(1),
@@ -81,74 +99,110 @@ export const Form = () => {
             marginLeft: theme.spacing(5),
             marginTop: theme.spacing(3)
         }
-    }));
+    }))
+    const classes = useStyles()
 
-const classes = useStyles()
-return <div>
-    <Typography variant="h5" style={{ marginTop: 48 }}>
-        How to get it?
-        </Typography>
-    <div>Change some parameters and look down, it is waiting for you there. </div>
-    <br />
-    <TextField
-        id="dimensions"
-        label="Dimensions"
-        type="number"
-        inputProps={{ min: "1", max: "5", step: "1" }}
-        className={classes.firstTextField}
-        value={dimensions}
-        onChange={handleDimensionsChange}
-        margin="normal"
-        InputLabelProps={{ title: dimensionsText }}
-    />
-    <TextField
-        id="degree"
-        label="Degree"
-        type="number"
-        inputProps={{ min: "0", max: "9", step: "1" }}
-        className={classes.textField}
-        value={degree}
-        onChange={handleDegreeChange}
-        margin="normal"
-        InputLabelProps={{ title: degreeText }}
-    />
-    <FormControl className={classes.surly} style={{ marginTop: 16, width: 160 }}>
-        <InputLabel
-            title={coefficientNotationText}
-            htmlFor="coefficient-notation">Coefficient notation
-            </InputLabel>
-        <Select
-            native
-            value={coefficientNotation}
-            onChange={handleCoefficientNotationChange}
-            inputProps={{
-                name: 'coefficient-notation',
-                id: 'coefficient-notation',
-            }}
-        >
-            <option value={'traditional'}>Traditional</option>
-            <option value={'pedantic'}>Pedantic</option>
-        </Select>
-    </FormControl>
-    <FormControl className={classes.surly} style={{ marginTop: 16, width: 160 }}>
-        <InputLabel
-            title={variablesNotationText}
-            htmlFor="variables-notation">Variables notation
-            </InputLabel>
-        <Select
-            native
-            value={variablesNotation}
-            onChange={handleVariablesNotationChange}
-            inputProps={{
-                name: 'variables-notation',
-                id: 'variables-notation',
-            }}
-        >
-            <option value={'traditional'}>Traditional</option>
-            <option value={'pedantic'}>Pedantic</option>
-        </Select>
-    </FormControl>
+    //#endregion
 
-</div>
+    //#region My Components
+
+    const Header = () => <div>
+        <Typography variant="h5" className={classes.title}>
+            How to get it?
+    </Typography>
+        <div>Change some parameters and look down, it is waiting for you there. </div>
+        <br />
+    </div>
+
+    const Dimensions = () => <span>
+        <TextField
+            id="dimensions"
+            label="Dimensions"
+            type="number"
+            inputProps={{ min: "1", max: "5", step: "1" }}
+            className={classes.firstTextField}
+            value={dimensions}
+            onChange={handleDimensionsChange}
+            margin="normal"
+            InputLabelProps={{ title: dimensionsText }}
+        />
+    </span>
+
+    const Degree = () => <span>
+        <TextField
+            id="degree"
+            label="Degree"
+            type="number"
+            inputProps={{ min: "0", max: "9", step: "1" }}
+            className={classes.textField}
+            value={degree}
+            onChange={handleDegreeChange}
+            margin="normal"
+            InputLabelProps={{ title: degreeText }}
+        />
+    </span>
+
+    const CoefficientNotation = () => <span>
+        <FormControl className={classes.surly} style={{ marginTop: 16, width: 160 }}>
+            <InputLabel
+                title={coefficientNotationText}
+                htmlFor="coefficient-notation">Coefficient notation
+            </InputLabel>
+            <Select
+                native
+                value={coefficientNotation}
+                onChange={handleCoefficientNotationChange}
+                inputProps={{
+                    name: 'coefficient-notation',
+                    id: 'coefficient-notation',
+                }}
+            >
+                <option value={'traditional'}>Traditional</option>
+                <option value={'pedantic'}>Pedantic</option>
+            </Select>
+        </FormControl>
+
+    </span>
+
+    const VariablesNotation = () => <span>
+        <FormControl className={classes.surly} style={{ marginTop: 16, width: 160 }}>
+            <InputLabel
+                title={variablesNotationText}
+                htmlFor="variables-notation">Variables notation
+            </InputLabel>
+            <Select
+                native
+                value={variablesNotation}
+                onChange={handleVariablesNotationChange}
+                inputProps={{
+                    name: 'variables-notation',
+                    id: 'variables-notation',
+                }}
+            >
+                <option value={'traditional'}>Traditional</option>
+                <option value={'pedantic'}>Pedantic</option>
+            </Select>
+        </FormControl>
+    </span>
+
+    //#endregion
+
+    //#region Render
+
+    return <div>
+
+        <Header />
+
+        <Dimensions />
+
+        <Degree />
+
+        <CoefficientNotation />
+
+        <VariablesNotation />
+
+    </div>
+
+    //#endregion
 
 }

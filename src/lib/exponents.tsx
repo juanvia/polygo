@@ -104,10 +104,11 @@ const takeValidPoints = (n:number, m:number) => {
  * independent variable must be raised
  *
  * @remarks
+ * 
  * This matrix is all you need in order to generate/calculate a Polynomial
  *
- * @param dimensions - The number of dimensions the phase space A
- * @param degree - Must be the max value the coordinates that the points of A can have
+ * @param dimensions The number of dimensions the phase space A
+ * @param degree Must be the max value the coordinates that the points of A can have
  * @returns The valid points in a `dimensions`-dimensional and `degree`ic phase space
  *
  */

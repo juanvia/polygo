@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider } from '@material-ui/styles';
-import App from './App';
-import theme from './theme';
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider } from '@material-ui/styles'
+import App from './App'
+import theme from './theme'
 import configureStore from './redux/store'
-import { setExponents } from './redux/actions';
-import { exponents } from './lib/exponents';
-import { compose } from 'ramda';
+import { setExponents } from './redux/actions'
+import { exponents } from './lib/exponents'
+import { compose } from 'ramda'
 
 const store = configureStore()
 
@@ -26,4 +26,4 @@ ReactDOM.render(
     </ThemeProvider>
   </Provider>,
   document.querySelector('#root'),
-);
+)

@@ -1,22 +1,19 @@
-import React from 'react';
-import { Form } from './Form';
-import { Typography } from '@material-ui/core';
-import { Polynomial } from './Polynomial';
-import { Matrix } from './Matrix';
+import React from 'react'
+import { Form } from './Form'
+import { Typography } from '@material-ui/core'
+import { Polynomial } from './Polynomial'
+import { Matrix } from './Matrix'
 
-export const PolynomialPage = () => {
+const PageTitle = () => <Typography variant="h3" gutterBottom>Get your polynomial</Typography>
 
-    return <div>
+export const PolynomialPage = () => <div>
 
-        <Typography variant="h3" gutterBottom>
-            Get your polynomial
-        </Typography>
+    <PageTitle />
+    
+    <Form />
 
-        <Form />
+    <Polynomial />
 
-        <Polynomial />
-        
-        <Matrix/>
-        
-    </div>
-}
+    <Matrix />
+
+</div>

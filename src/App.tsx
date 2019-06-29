@@ -1,10 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import { PolynomialPage } from './components/polynomial-page/PolynomialPage';
-import ImageAvatars from './components/ImageAvatars';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import { PolynomialPage } from './components/polynomial-page/PolynomialPage'
+import ImageAvatars from './components/ImageAvatars'
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,10 +27,10 @@ const useStyles = makeStyles(theme => ({
   borderless: {
     border:'none'
   },
-}));
+}))
 
 export default function App() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -47,5 +47,5 @@ export default function App() {
         </Container>
       </main>
     </div>
-  );
+  )
 }
