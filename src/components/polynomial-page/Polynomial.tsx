@@ -172,7 +172,7 @@ export const Polynomial = () => {
 
   const Title = () => {
 
-    const pompadour: string = ``
+    const deck: string = ``
       + `${dimensionsInWords(dimensions ? dimensions : 0)}, `
       + `${degreeInWords(degree ? degree : 0)}, `
       + `${exponentsArray.length} terms.`
@@ -180,7 +180,7 @@ export const Polynomial = () => {
 
       <SectionHeader
         title="Polynomial"
-        pompadour={pompadour}
+        deck={deck}
       />
 
     </div>

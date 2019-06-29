@@ -17,7 +17,7 @@ export const Matrix = () => {
 
     //#endregion
 
-    const pompadour: string = ``
+    const deck: string = ``
         + `${dimensionsInWords(dimensions ? dimensions : 0)}, `
         + `${degreeInWords(degree ? degree : 0)}, `
         + `${exponentsArray.length} rows.`
@@ -28,7 +28,7 @@ export const Matrix = () => {
 
         <SectionHeader
             title="Exponents array"
-            pompadour={pompadour}
+            deck={deck}
         />
 
         <div style={{ fontFamily: 'Roboto Mono', fontSize: 14, fontWeight: 'bolder', marginTop: 24 }}>

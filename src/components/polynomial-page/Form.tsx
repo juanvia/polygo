@@ -109,7 +109,7 @@ export const Form = () => {
 
         <SectionHeader
             title="How to get it?"
-            pompadour="Change some parameters and look down, it is waiting for you there."
+            deck="Change some parameters and look down, it is waiting for you there."
         />
         <br/>
 
