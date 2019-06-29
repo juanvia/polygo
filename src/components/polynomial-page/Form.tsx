@@ -35,12 +35,10 @@ export const Form = () => {
 
     const handleDimensionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault()
-        event.target.focus()
         dispatch(computeExponentsOn(setDimensions, Number(event.target.value)))
     }
     const handleDegreeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault()
-        event.target.focus()
         dispatch(computeExponentsOn(setDegree, Number(event.target.value)))
     }
     const handleCoefficientNotationChange = (event: React.ChangeEvent<{ name?: string, value: unknown }>) => {
