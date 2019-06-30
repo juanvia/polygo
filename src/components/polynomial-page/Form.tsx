@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, makeStyles, Select, TextField } from '@material-ui/core'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCoefficientNotation, setDegree, setDimensions, setVariablesNotation, computeExponentsOn } from '../../redux/actions'
+import { setCoefficientNotation, setDegree, setVariablesNotation, computeExponentsOn, setDimensions } from '../../redux/actions'
 import { TradicionalVsPedantic } from '../../redux/actionTypes'
 import { AppState } from '../../redux/store'
 import SectionHeader from './SectionHeader'

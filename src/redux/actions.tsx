@@ -1,4 +1,4 @@
-import { ThunkAction } from 'redux-thunk'
+import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { ActionCreator } from 'redux'
 import {
   SET_EXPONENTS, SetExponentsAction,
@@ -8,6 +8,7 @@ import {
   SET_VARIABLES_NOTATION, SetVariablesNotationAction,
   TradicionalVsPedantic
 } from "./actionTypes"
+
 import { AppState } from './store'
 import { exponentsArray } from '../lib/exponents-array'
 
@@ -39,21 +40,20 @@ export const setDegree: ActionCreator<SetDegreeAction> = (value: number): SetDeg
   payload: value,
 })
 
-type SuitableFunction = typeof setCoefficientNotation
-  | typeof setVariablesNotation
-  | typeof setDimensions
-  | typeof setDegree
+type MustRecalculateFunction = typeof setDimensions | typeof setDegree
 
-type SuitableAction = SetCoefficientNotationAction
-  | SetDegreeAction
-  | SetDimensionsAction
-  | SetVariablesNotationAction
+type MustRecalculateAction = SetDimensionsAction | SetDegreeAction
 
-export const computeExponentsOn: ActionCreator<ThunkAction<SetExponentsAction, AppState, AppState, SetExponentsAction>> =
-  (f: SuitableFunction, value: SuitableAction) => (dispatch: Function, getState: () => AppState) => {
-    dispatch(f(value))
-    const { dimensions, degree } = getState()
-    return dispatch(setExponents(exponentsArray(dimensions, degree)))
+type ValidHereAction = MustRecalculateAction | SetExponentsAction
+
+export const computeExponentsOn: ActionCreator<ThunkAction<void, AppState, {}, MustRecalculateAction>> =
+  (f: MustRecalculateFunction, x: number) => (
+    dispatch: ThunkDispatch<AppState, {}, ValidHereAction>,
+    getState: () => AppState
+  ) => {
+    dispatch(f(x))
+    let { dimensions, degree } = getState()
+    dispatch(setExponents(exponentsArray(dimensions, degree)))
   }
 
 
