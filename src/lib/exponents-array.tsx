@@ -3,7 +3,7 @@ import { repeat,concat,sort, sum, takeLast, reduce,add, map, pipe, split, join }
 /**
  * Helper for sorting the result
  */
-const relevance = (row:number[]) => {
+const relevance = (row:number[]) : number => {
   return sum(row) * 1000000 
   + reduce(Math.max, Number.MIN_VALUE)(row) * 1000 
   + row.reduce((previous, current, index, array) => previous + 2 ** (array.length - index) * current, 0)
@@ -23,7 +23,7 @@ const byRelevance = (a:number[], b:number[]) => relevance(b) - relevance(a)
  * @param base The base at wich the number will be expressed
  * @param value The input integer number
  */
-const transform = (size:number, base:number, value:number) => pipe(
+const transform = (size:number, base:number, value:number) : number[] => pipe (
 
   concat(join('',repeat('0',size))),  // ensure enough length for next step
   takeLast(size),                     // the length must equals the value of the "size" variable
@@ -69,7 +69,7 @@ const transform = (size:number, base:number, value:number) => pipe(
  * @returns The valid points in a `n`-dimensional and `n`ic phase space
  *
  */
-const takeValidPoints = (n:number, m:number) => {
+const takeValidPoints = (n:number, m:number) : number[][] => {
   
   // Initialize the list of valid points to empty
   let valids = []
@@ -112,7 +112,7 @@ const takeValidPoints = (n:number, m:number) => {
  * @returns The valid points in a `dimensions`-dimensional and `degree`ic phase space
  *
  */
-export const exponentsArray = (dimensions:number|undefined, degree:number|undefined):number[][] => {
+export const exponentsArray = (dimensions:number, degree:number):number[][] => {
   
   // Maybe the programmer is lousy
   if (!dimensions || !degree) return [repeat(0,dimensions?dimensions:0)]

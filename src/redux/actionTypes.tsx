@@ -9,26 +9,26 @@ export type TradicionalVsPedantic = "traditional" | "pedantic" | undefined
 
 export interface SetExponentsAction extends Action {
     type: typeof SET_EXPONENTS
-    payload: number[][]
+    payload?: number[][]
 }
 
 export interface SetVariablesNotationAction extends Action {
     type: typeof SET_VARIABLES_NOTATION
-    payload: TradicionalVsPedantic
+    payload?: TradicionalVsPedantic
 }
 
 export interface SetCoefficientNotationAction extends Action {
     type: typeof SET_COEFFICIENT_NOTATION
-    payload: TradicionalVsPedantic
+    payload?: TradicionalVsPedantic
 }
   
 export interface SetDimensionsAction extends Action {
     type: typeof SET_DIMENSIONS
-    payload: number
+    payload?: number
 }
   
 export interface SetDegreeAction extends Action {
     type: typeof SET_DEGREE
-    payload: number
+    payload?: number
 }
   

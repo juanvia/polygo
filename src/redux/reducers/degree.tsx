@@ -4,7 +4,7 @@ import { Reducer } from "react"
 
 const initialState:number = 3
 
-export const degree : Reducer<number | undefined,SetDegreeAction> = 
+export const degree : Reducer<number|undefined,SetDegreeAction> = 
 (state = initialState, action:SetDegreeAction) => {
   switch (action.type) {
     case SET_DEGREE: {

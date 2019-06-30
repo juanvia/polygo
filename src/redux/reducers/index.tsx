@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers} from "redux";
 import { exponentsArray } from './exponents-array'
 import { coefficientNotation } from './coefficient-notation'
 import { variablesNotation } from './variables-notation'

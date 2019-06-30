@@ -23,10 +23,10 @@ export const Form = () => {
 
     //#region Hooks
 
-    const degree: number | undefined = useSelector((state: AppState) => state.degree)
-    const dimensions: number | undefined = useSelector((state: AppState) => state.dimensions)
-    const variablesNotation: string | undefined = useSelector((state: AppState) => state.variablesNotation)
-    const coefficientNotation: string | undefined = useSelector((state: AppState) => state.coefficientNotation)
+    const degree: number = useSelector((state: AppState) => state.degree) || 0
+    const dimensions: number  = useSelector((state: AppState) => state.dimensions) || 1
+    const variablesNotation: string  = useSelector((state: AppState) => state.variablesNotation) || 'tradicional'
+    const coefficientNotation: string  = useSelector((state: AppState) => state.coefficientNotation) || 'tradicional'
 
     const dispatch = useDispatch()
 

@@ -9,12 +9,13 @@ export const Matrix = () => {
 
     //#region Hooks
 
-    const {
+    let {
         exponentsArray,
         dimensions,
         degree
     } = useSelector((state: AppState) => state)
 
+    exponentsArray = exponentsArray || [[]]
     //#endregion
 
     const deck: string = ``

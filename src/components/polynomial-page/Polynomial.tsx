@@ -18,11 +18,13 @@ export const Polynomial = () => {
 
   //#region Hooks
 
-  const {
+  let {
     exponentsArray,
     dimensions,
     degree
-  } = useSelector((state: AppState) => state)
+} = useSelector((state: AppState) => state)
+
+exponentsArray = exponentsArray || [[]]
 
   //#endregion
 
@@ -102,7 +104,7 @@ export const Polynomial = () => {
   }) => {
 
     const { coefficientNotation, exponentsArray } = useSelector((state: AppState) => state)
-    let effectiveNotation = exponentsArray.length > upperCases.length
+    let effectiveNotation = (exponentsArray && exponentsArray.length > upperCases.length)
       ? 'pedantic'
       : coefficientNotation
 
@@ -131,8 +133,10 @@ export const Polynomial = () => {
 
   const Terms = () => {
 
+    if (!exponentsArray) return null
+
     return <>
-      {exponentsArray.map((exponents, index, array) => <span key={index}>
+      {exponentsArray.map((exponents:number[], index:number, array:number[][]) => <span key={index}>
 
         <Term
           exponents={exponents}
@@ -175,7 +179,7 @@ export const Polynomial = () => {
     const deck: string = ``
       + `${dimensionsInWords(dimensions ? dimensions : 0)}, `
       + `${degreeInWords(degree ? degree : 0)}, `
-      + `${exponentsArray.length} terms.`
+      + `${exponentsArray ? exponentsArray.length : 0} terms.`
     return <div>
 
       <SectionHeader

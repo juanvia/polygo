@@ -46,14 +46,20 @@ type MustRecalculateAction = SetDimensionsAction | SetDegreeAction
 
 type ValidHereAction = MustRecalculateAction | SetExponentsAction
 
-export const computeExponentsOn: ActionCreator<ThunkAction<void, AppState, {}, MustRecalculateAction>> =
-  (f: MustRecalculateFunction, x: number) => (
-    dispatch: ThunkDispatch<AppState, {}, ValidHereAction>,
-    getState: () => AppState
-  ) => {
+type ValidDispatch = ThunkDispatch<AppState, {}, ValidHereAction>
+
+type Proactive = ActionCreator<ThunkAction<void, AppState, {}, MustRecalculateAction>>
+
+
+export const computeExponentsOn: Proactive = (f: MustRecalculateFunction, x: number) =>
+
+  (dispatch: ValidDispatch, getState: () => AppState) => {
+
     dispatch(f(x))
+
     let { dimensions, degree } = getState()
-    dispatch(setExponents(exponentsArray(dimensions, degree)))
+    dispatch(setExponents(exponentsArray(dimensions?dimensions:1, degree?degree:0)))
+
   }
 
 

@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/styles'
 import App from './App'
 import theme from './theme'
-import configureStore from './redux/store'
+import configureStore, { AppState } from './redux/store'
 import { setExponents } from './redux/actions'
 import { exponentsArray } from './lib/exponents-array'
 import { compose } from 'ramda'
@@ -14,8 +14,9 @@ const store = configureStore()
 
 /* Initial computation of the exponents matrix */
 
-const {dimensions, degree} = store.getState()
-compose(store.dispatch,setExponents,exponentsArray)(dimensions, degree)
+const {dimensions, degree} : AppState = store.getState()
+
+compose(store.dispatch,setExponents,exponentsArray)(dimensions?dimensions:1, degree?degree:0)
 
 ReactDOM.render(
   <Provider store={store}>
