@@ -114,9 +114,6 @@ const takeValidPoints = (n:number, m:number) : number[][] => {
  */
 export const exponentsArray = (dimensions:number, degree:number):number[][] => {
   
-  // Maybe the programmer is lousy
-  if (!dimensions || !degree) return [repeat(0,dimensions?dimensions:0)]
-
   // Add zero degree case
   if (degree === 0) {
     return [repeat(0,dimensions)]
