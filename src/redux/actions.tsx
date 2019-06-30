@@ -10,7 +10,7 @@ import {
 } from "./actionTypes"
 
 import { AppState } from './store'
-import { exponentsArray } from '../lib/exponents-array'
+import { makeExponentsArray } from '../lib/exponents-array'
 
 export const setExponents: ActionCreator<SetExponentsAction> =
   (array: number[][]): SetExponentsAction => ({
@@ -58,7 +58,7 @@ export const computeExponentsOn: Proactive = (f: MustRecalculateFunction, x: num
     dispatch(f(x))
 
     let { dimensions, degree } = getState()
-    dispatch(setExponents(exponentsArray(dimensions?dimensions:1, degree?degree:0)))
+    dispatch(setExponents(makeExponentsArray(dimensions?dimensions:1, degree?degree:0)))
 
   }
 
